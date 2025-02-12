@@ -14,5 +14,7 @@ class Interface:
                 self._bot_char = 'X'
             case '0':
                 self.continue_game = False
+            case _:
+                print('Invalid character. Please choose between X or O.')
 
 
