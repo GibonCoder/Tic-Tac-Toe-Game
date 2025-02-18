@@ -13,7 +13,10 @@ class Game:
 
     def place_move(self, row, col, player):
         transformed_col = transform_column(col)
-        self.board[row-1][transformed_col] = player
+        if self.validate_move(row, transformed_col):
+            self.board[row-1][transformed_col] = player
+        else:
+            raise ValueError('Invalid move!')
 
     def validate_move(self, row, col):
         if row < 1 or row > 3:
