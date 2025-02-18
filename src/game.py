@@ -1,3 +1,5 @@
+from transform_column import transform_column
+
 class Game:
     def __init__(self):
         self.board = [[' ' for _ in range(3)] for _ in range(3)]
@@ -7,3 +9,8 @@ class Game:
         for index, row in enumerate(self.board):
             print('_'*12)
             print(f'{index+1}. ' + ' | '.join(row))
+
+    def place_move(self, row, col, player):
+        transformed_col = transform_column(col)
+        self.board[row-1][transformed_col] = player
+
