@@ -1,5 +1,5 @@
 def transform_column(column):
-    match column:
+    match column.upper():
         case 'A':
             return 0
         case 'B':
