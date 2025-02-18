@@ -3,6 +3,7 @@ class Game:
         self.board = [[' ' for _ in range(3)] for _ in range(3)]
 
     def print_board(self):
-        for row in self.board:
-            print(('|'.join(row)))
-            print('_'*5)
+        print(' '*3 + 'A | B | C')
+        for index, row in enumerate(self.board):
+            print('_'*12)
+            print(f'{index+1}. ' + ' | '.join(row))
