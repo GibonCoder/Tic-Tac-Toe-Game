@@ -40,3 +40,6 @@ class Game:
         elif self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ':
             return True
         return False
+
+    def is_tie(self):
+        return all(cell != ' ' for row in self.board for cell in row) and self.check_win() is False
