@@ -24,3 +24,19 @@ class Game:
         elif self.board[row-1][col] != ' ':
             return False
         return True
+
+    def check_win(self):
+        # Check rows
+        for row in self.board:
+            if row[0] == row[1] == row[2] != ' ':
+                return True
+        # Check columns
+        for column in range(3):
+            if self.board[0][column] == self.board[1][column] == self.board[2][column] != ' ':
+                return True
+        # Check diagonals
+        if self.board[0][0] == self.board[1][1] == self.board[2][2] != ' ':
+            return True
+        elif self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ':
+            return True
+        return False
