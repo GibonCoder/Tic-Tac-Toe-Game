@@ -1,4 +1,9 @@
-def transform_column(column):
+def transform_column(column: str) -> int:
+    """Transforms the column letter to a number.
+       Args:
+           column (str): The column letter to transform.
+       Returns:
+           int: Column number."""
     match column.upper():
         case 'A':
             return 0
