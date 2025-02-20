@@ -23,18 +23,25 @@ class HumanPlayer(Player):
 
     @property
     def score(self):
+        """Returns the score of the player."""
         return self._score
 
     def increase_score(self):
+        """Increases the score of the player by 1."""
         self._score += 1
 
     def get_character(self):
+        """Returns the character of the player."""
         return self._character
 
-    def set_character(self, char):
+    def set_character(self, char: str):
+        """Sets te character of the player.
+           Args:
+               char (str): The character of the player."""
         self._character = char
 
     def get_move(self):
+        """Gets the move of the player"""
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
         return cell
 
