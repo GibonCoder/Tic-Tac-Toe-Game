@@ -1,6 +1,3 @@
-from transform_column import transform_column
-
-
 class Game:
     def __init__(self):
         self.board = [[' ' for _ in range(3)] for _ in range(3)]
@@ -13,26 +10,23 @@ class Game:
             print('_'*12)
             print(f'{index+1}. ' + ' | '.join(row))
 
-    def place_move(self, row: int, col: str, player: str):
+    def place_move(self, cell: list, player: str):
         """Places a move on the board.
            Args:
-               row (int): The row where the move will be placed.
-               col (str): The column where the move will be placed.
+               cell (list): The cell to place the move.
                player (str): The player making the move."""
-        transformed_col = transform_column(col)
-        if self.validate_move(row, transformed_col):
-            self.board[row-1][transformed_col] = player
+        if self.validate_move(cell):
+            self.board[cell[1]][cell[0]] = player
         else:
             raise ValueError('Invalid move!')
 
-    def validate_move(self, row: int, col: int):
+    def validate_move(self, cell: list):
         """Checks if a move is valid.
            Args:
-               row (int): The row to validate before placing the move.
-               col (int): The column to validate before placing the move."""
-        if row < 1 or row > 3:
+               cell (list): The cell to validate."""
+        if cell[1] < 1 or cell[1] > 3:
             return False
-        elif self.board[row-1][col] != ' ':
+        elif self.board[cell[1]][cell[0]] != ' ':
             return False
         return True
 
