@@ -37,7 +37,7 @@ class HumanPlayer(Player):
         return self._score
 
     def increase_score(self):
-        """Increases the score of the player by 1."""
+        """Increments the score value by 1."""
         self._score += 1
 
     @property
@@ -63,6 +63,30 @@ class HumanPlayer(Player):
             self._character = None
             self._score = 0
 
+        @property
+        def character(self):
+            """Returns the character of the bot."""
+            return self._character
+
+        @character.setter
+        def character(self, char: str):
+            """Sets the character of the bot.
+               Args:
+                   char (str): The character of the bot."""
+            self._character = char
+
+        @property
+        def score(self):
+            """Returns the score of the bot."""
+            return self._score
+
+        def increase_score(self):
+            """Increments score value by 1."""
+            self._score += 1
+
+        def get_move(self):
+            """Gets the move of the bot."""
+            pass
 
 
 
