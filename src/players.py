@@ -58,6 +58,10 @@ class HumanPlayer(Player):
         return cell
 
 
+    class ComputerPlayer(Player):
+        def __init__(self):
+            self._character = None
+            self._score = 0
 
 
 
