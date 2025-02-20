@@ -4,7 +4,12 @@ from abc import ABC, abstractmethod
 class Player(ABC):
     @property
     @abstractmethod
-    def get_character(self):
+    def character(self):
+        pass
+
+    @character.setter
+    @abstractmethod
+    def character(self, char):
         pass
 
     @property
@@ -36,11 +41,12 @@ class HumanPlayer(Player):
         self._score += 1
 
     @property
-    def get_character(self):
+    def character(self):
         """Returns the character of the player."""
         return self._character
 
-    def set_character(self, char: str):
+    @character.setter
+    def character(self, char: str):
         """Sets te character of the player.
            Args:
                char (str): The character of the player."""
@@ -50,6 +56,9 @@ class HumanPlayer(Player):
         """Gets the move of the player"""
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
         return cell
+
+
+
 
 
 
