@@ -55,44 +55,40 @@ class HumanPlayer(Player):
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
         return cell
 
-    class ComputerPlayer(Player):
-        def __init__(self):
-            self._character = None
-            self._score = 0
 
-        @property
-        def character(self):
-            """Returns the character of the bot."""
-            return self._character
+class ComputerPlayer(Player):
+    def __init__(self):
+        self._character = None
+        self._score = 0
 
-        @character.setter
-        def character(self, char: str):
-            """Sets the character of the bot.
-               Args:
-                   char (str): The character of the bot."""
-            self._character = char
+    @property
+    def character(self):
+        """Returns the character of the bot."""
+        return self._character
 
-        @property
-        def get_score(self):
-            """Returns the score of the bot."""
-            return self._score
+    @character.setter
+    def character(self, char: str):
+        """Sets the character of the bot.
+           Args:
+               char (str): The character of the bot."""
+        self._character = char
 
-        def increase_score(self):
-            """Increments score value by 1."""
-            self._score += 1
+    @property
+    def get_score(self):
+        """Returns the score of the bot."""
+        return self._score
 
-        def get_move(self, board):
-            """Gets the move of the bot."""
-            rand_col = random.randint(0, 2)
-            rand_row = random.randint(0, 2)
-            rand_cell = [rand_col, rand_row]
+    def increase_score(self):
+        """Increments score value by 1."""
+        self._score += 1
 
-            if board[rand_cell[1]][rand_cell[0]] == ' ':
-                return rand_cell
-            else:
-                return self.get_move(board)
+    def get_move(self, board):
+        """Gets the move of the bot."""
+        rand_col = random.randint(0, 2)
+        rand_row = random.randint(0, 2)
+        rand_cell = [rand_col, rand_row]
 
-
-
-
-
+        if board[rand_cell[1]][rand_cell[0]] == ' ':
+            return rand_cell
+        else:
+            return self.get_move(board)
