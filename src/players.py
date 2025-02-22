@@ -83,6 +83,14 @@ class HumanPlayer(Player):
 
         def get_move(self, board):
             """Gets the move of the bot."""
+            rand_col = random.randint(0, 2)
+            rand_row = random.randint(0, 2)
+            rand_cell = [rand_col, rand_row]
+
+            if board[rand_cell[1]][rand_cell[0]] == ' ':
+                return rand_cell
+            else:
+                return self.get_move(board)
 
 
 
