@@ -21,10 +21,6 @@ class Player(ABC):
     def increase_score(self):
         pass
 
-    @abstractmethod
-    def get_move(self):
-        pass
-
 
 class HumanPlayer(Player):
     def __init__(self):
@@ -52,11 +48,11 @@ class HumanPlayer(Player):
                char (str): The character of the player."""
         self._character = char
 
+    @staticmethod
     def get_move(self):
         """Gets the move of the player"""
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
         return cell
-
 
     class ComputerPlayer(Player):
         def __init__(self):
@@ -76,7 +72,7 @@ class HumanPlayer(Player):
             self._character = char
 
         @property
-        def score(self):
+        def get_score(self):
             """Returns the score of the bot."""
             return self._score
 
@@ -84,9 +80,9 @@ class HumanPlayer(Player):
             """Increments score value by 1."""
             self._score += 1
 
-        def get_move(self):
+        def get_move(self, board):
             """Gets the move of the bot."""
-            pass
+
 
 
 
