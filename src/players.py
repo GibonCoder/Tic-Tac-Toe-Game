@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 import random
 
+from parse_input import parse_input
+
 
 class Player(ABC):
     @property
@@ -52,7 +54,7 @@ class HumanPlayer(Player):
     def get_move(self):
         """Gets the move of the player"""
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
-        return cell
+        return parse_input(cell)
 
 
 class ComputerPlayer(Player):
@@ -90,4 +92,4 @@ class ComputerPlayer(Player):
         if board[rand_cell[1]][rand_cell[0]] == ' ':
             return rand_cell
         else:
-            return self.get_move(board)
+            self.get_move(board)
