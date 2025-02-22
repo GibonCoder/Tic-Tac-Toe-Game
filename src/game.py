@@ -9,17 +9,21 @@ class Game:
         for index, row in enumerate(self.board):
             print('_'*12)
             print(f'{index+1}. ' + ' | '.join(row))
-            print()
+        print('\n\n')
 
     def place_move(self, cell: list, player: str):
         """Places a move on the board.
            Args:
                cell (list): The cell to place the move.
                player (str): The player making the move."""
-        if self.validate_move(cell):
-            self.board[cell[1]][cell[0]] = player
+        try:
+            self.validate_move(cell)
+        except ValueError:
+            print('Invalid move!')
+            return False
         else:
-            raise ValueError('Invalid move!')
+            self.board[cell[1]][cell[0]] = player
+            return True
 
     def validate_move(self, cell: list):
         """Checks if a move is valid.
@@ -27,7 +31,7 @@ class Game:
                cell (list): The cell to validate."""
         if cell[1] < 1 or cell[1] > 3:
             return False
-        elif self.board[cell[1]][cell[0]] != ' ':
+        if self.board[cell[1]][cell[0]] != ' ':
             return False
         return True
 
