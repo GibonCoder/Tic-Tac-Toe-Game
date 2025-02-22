@@ -49,7 +49,6 @@ class HumanPlayer(Player):
                char (str): The character of the player."""
         self._character = char
 
-    @staticmethod
     def get_move(self):
         """Gets the move of the player"""
         cell = input("Enter cell where you want to place your move (e.g. A1): ")
