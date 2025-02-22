@@ -9,6 +9,7 @@ class Game:
         for index, row in enumerate(self.board):
             print('_'*12)
             print(f'{index+1}. ' + ' | '.join(row))
+            print()
 
     def place_move(self, cell: list, player: str):
         """Places a move on the board.
