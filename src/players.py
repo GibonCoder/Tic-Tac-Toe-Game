@@ -85,13 +85,8 @@ class ComputerPlayer(Player):
 
     def get_move(self, board):
         """Gets the move of the bot."""
-        taken_cells = []
-
         rand_col = random.randint(0, 2)
         rand_row = random.randint(0, 2)
         rand_cell = [rand_col, rand_row]
-
-        while not board[rand_cell[1]][rand_cell[0]] == ' ' or rand_cell in taken_cells:
-            self.get_move(board)
 
         return rand_cell
