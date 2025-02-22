@@ -12,3 +12,6 @@ for _ in range(5):
     move = human.get_move()
     game.place_move(move, human.character)
     game.print_board()
+    move = computer.get_move()
+    game.place_move(move, computer.character)
+    game.print_board()
