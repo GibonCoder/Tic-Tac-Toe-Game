@@ -29,10 +29,13 @@ class Game:
         """Checks if a move is valid.
            Args:
                cell (list): The cell to validate."""
-        if cell[1] < 1 or cell[1] > 3:
-            return False
-        if self.board[cell[1]][cell[0]] != ' ':
-            return False
+        is_valid = False
+        while is_valid:
+            if cell[1] in range(3):
+                pass
+            if self.board[cell[1]][cell[0]] != ' ':
+                pass
+            is_valid = True
         return True
 
     def check_win(self):
