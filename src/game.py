@@ -30,7 +30,7 @@ class Game:
            Args:
                cell (list): The cell to validate."""
         is_valid = False
-        while is_valid:
+        while not is_valid:
             if cell[1] not in range(3):
                 return False
             if self.board[cell[1]][cell[0]] in ('X', 'O'):
