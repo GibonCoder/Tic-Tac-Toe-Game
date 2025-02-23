@@ -99,8 +99,13 @@ class ComputerPlayer(Player):
         opponent = 'X' if self._character == 'O' else 'O'
         # Check rows
         for row in board:
-            for i in range(3):
-                if row[i - 3] == row[i - 2] == opponent and row[i - 1] == ' ':
-                    return [True, [i - 1, board.index(row)]]
+            for col in range(3):
+                if row[col - 3] == row[col - 2] == opponent and row[col - 1] == ' ':
+                    return [True, [col - 1, board.index(row)]]
+        # Check columns
+        for col in range(3):
+            for row in range(3):
+                if board[row - 3][col] == board[row - 2][col] == opponent and board[row-1][col] == ' ':
+                    return [True, [col, row - 1]]
 
 
