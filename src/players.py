@@ -88,5 +88,9 @@ class ComputerPlayer(Player):
         rand_col = random.randint(0, 2)
         rand_row = random.randint(0, 2)
         rand_cell = [rand_col, rand_row]
-
         return rand_cell
+
+    def is_opponent_winning(self, board):
+        opponent = 'X' if self._character == 'O' else 'O'
+
+
