@@ -44,17 +44,17 @@ class Game:
         # Check rows
         for row in self.board:
             if row[0] == row[1] == row[2] != ' ':
-                return True
+                return [True, row[0]]
         # Check columns
         for column in range(3):
             if self.board[0][column] == self.board[1][column] == self.board[2][column] != ' ':
-                return True
+                return [True, self.board[0][column]]
         # Check diagonals
         if self.board[0][0] == self.board[1][1] == self.board[2][2] != ' ':
-            return True
+            return [True, self.board[0][0]]
         elif self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ':
-            return True
-        return False
+            return [True, self.board[0][2]]
+        return [False, None]
 
     def is_tie(self):
         """Checks if the game is a tie."""
