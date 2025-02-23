@@ -16,27 +16,21 @@ class Game:
            Args:
                cell (list): The cell to place the move.
                player (str): The player making the move."""
-        try:
-            self.validate_move(cell)
-        except ValueError:
-            print('Invalid move!')
-            return False
-        else:
+        if self.validate_move(cell):
             self.board[cell[1]][cell[0]] = player
             return True
+        print('Invalid move!')
+        return False
 
     def validate_move(self, cell: list):
         """Checks if a move is valid.
            Args:
                cell (list): The cell to validate."""
-        is_valid = False
-        while not is_valid:
-            if cell[1] not in range(3):
-                return False
-            if self.board[cell[1]][cell[0]] in ('X', 'O'):
-                print('This cell is already taken!')
-                return False
-            is_valid = True
+        if cell[0] not in range(3) or cell[1] not in range(3):
+            return False
+        if self.board[cell[1]][cell[0]] != ' ':
+            print('This cell is already taken!')
+            return False
         return True
 
     def check_win(self):
