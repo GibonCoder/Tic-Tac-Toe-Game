@@ -84,13 +84,23 @@ class ComputerPlayer(Player):
         self._score += 1
 
     def get_move(self, board):
-        """Gets the move of the bot."""
+        """Gets the move of the bot.
+           Args:
+                board (list): The current board state."""
         rand_col = random.randint(0, 2)
         rand_row = random.randint(0, 2)
         rand_cell = [rand_col, rand_row]
         return rand_cell
 
     def is_opponent_winning(self, board):
+        """Checks if the opponent is about to win.
+           Args:
+                board (list): The current board state."""
         opponent = 'X' if self._character == 'O' else 'O'
+        # Check rows
+        for row in board:
+            for i in range(3):
+                if row[i - 3] == row[i - 2] == opponent and row[i - 1] == ' ':
+                    return [True, [i - 1, board.index(row)]]
 
 
