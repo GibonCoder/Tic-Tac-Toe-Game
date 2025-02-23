@@ -31,10 +31,11 @@ class Game:
                cell (list): The cell to validate."""
         is_valid = False
         while is_valid:
-            if cell[1] in range(3):
-                pass
-            if self.board[cell[1]][cell[0]] != ' ':
-                pass
+            if cell[1] not in range(3):
+                return False
+            if self.board[cell[1]][cell[0]] in ('X', 'O'):
+                print('This cell is already taken!')
+                return False
             is_valid = True
         return True
 
