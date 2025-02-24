@@ -101,24 +101,23 @@ class ComputerPlayer(Player):
            Args:
                 board (list): The current board state."""
         opponent = 'X' if self._character == 'O' else 'O'
-        # Check rows
-        for row in board:
-            for col in range(3):
-                if row[col] == row[col-1] == opponent and row[col-2] == ' ':
-                    return [True, [col-2, board.index(row)]]
-        # Check columns
-        for col in range(3):
-            for row in range(3):
-                if board[row][col] == board[row-1][col] == opponent and board[row-2][col] == ' ':
-                    return [True, [col, row-2]]
-        # Check diagonals
-        ad = [(0, 2), (1, 1), (2, 0)]  # Anti-diagonals
+        # Check rows and columns
         for i in range(3):
-            if board[i][i] == board[i-1][i-1] == opponent and board[i-2][i-2] == ' ':
-                return [True, [i-2, i-2]]
-            elif board[ad[i][0]][ad[i][1]] == board[ad[i-1][0]][ad[i-1][1]] == opponent and board[ad[i-2][0]][ad[i-2][1]] == ' ':
-                return [True, [ad[i-2][0], ad[i-2][1]]]
-            return [False, None]
-
-
-
+            # Check rows
+            if board[i].count(opponent) == 2 and ' ' in board[i]:
+                return [True, [board[i].index(' '), i]]
+            # Check columns
+            column = [board[j][i] for j in range(3)]
+            if column.count(opponent) == 2 and ' ' in column:
+                return [True, [i, column.index(' ')]]
+        # Check main diagonal
+        diag = [board[i][i] for i in range(3)]
+        if diag.count(opponent) == 2 and ' ' in diag:
+            empty_index = diag.index(' ')
+            return [True, [empty_index, empty_index]]
+        # Check anti-diagonal
+        anti_diag = [board[i][2-i] for i in range(3)]
+        if anti_diag.count(opponent) == 2 and ' ' in anti_diag:
+            empty_index = anti_diag.index(' ')
+            return [True, [2-empty_index, empty_index]]
+        return [False, None]
