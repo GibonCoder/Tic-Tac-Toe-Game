@@ -92,7 +92,7 @@ class ComputerPlayer(Player):
         rand_cell = [rand_col, rand_row]
         return rand_cell
 
-    def is_opponent_winning(self, board):
+    def is_opponent_about_to_win(self, board):
         """Checks if the opponent is about to win.
            Args:
                 board (list): The current board state."""
@@ -100,12 +100,16 @@ class ComputerPlayer(Player):
         # Check rows
         for row in board:
             for col in range(3):
-                if row[col - 3] == row[col - 2] == opponent and row[col - 1] == ' ':
-                    return [True, [col - 1, board.index(row)]]
+                if row[col-3] == row[col-2] == opponent and row[col-1] == ' ':
+                    return [True, [col-1, board.index(row)]]
         # Check columns
         for col in range(3):
             for row in range(3):
-                if board[row - 3][col] == board[row - 2][col] == opponent and board[row-1][col] == ' ':
-                    return [True, [col, row - 1]]
+                if board[row-3][col] == board[row-2][col] == opponent and board[row-1][col] == ' ':
+                    return [True, [col, row-1]]
+        # Check diagonals
+        for i in range(3):
+            if board[i][i] == board[i-1][i-1] == opponent and board[i-2][i-2] == ' ':
+                return [True, [i-2, i-2]]
 
 
