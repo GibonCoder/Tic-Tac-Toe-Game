@@ -87,10 +87,14 @@ class ComputerPlayer(Player):
         """Gets the move of the bot.
            Args:
                 board (list): The current board state."""
-        rand_col = random.randint(0, 2)
-        rand_row = random.randint(0, 2)
-        rand_cell = [rand_col, rand_row]
-        return rand_cell
+        is_opponent_winning = self.is_opponent_about_to_win(board)
+        if is_opponent_winning[0]:
+            return is_opponent_winning[1]
+        else:
+            rand_col = random.randint(0, 2)
+            rand_row = random.randint(0, 2)
+            rand_cell = [rand_col, rand_row]
+            return rand_cell
 
     def is_opponent_about_to_win(self, board):
         """Checks if the opponent is about to win.
@@ -100,13 +104,13 @@ class ComputerPlayer(Player):
         # Check rows
         for row in board:
             for col in range(3):
-                if row[col-3] == row[col-2] == opponent and row[col-1] == ' ':
-                    return [True, [col-1, board.index(row)]]
+                if row[col] == row[col-1] == opponent and row[col-2] == ' ':
+                    return [True, [col-2, board.index(row)]]
         # Check columns
         for col in range(3):
             for row in range(3):
-                if board[row-3][col] == board[row-2][col] == opponent and board[row-1][col] == ' ':
-                    return [True, [col, row-1]]
+                if board[row][col] == board[row-1][col] == opponent and board[row-2][col] == ' ':
+                    return [True, [col, row-2]]
         # Check diagonals
         ad = [(0, 2), (1, 1), (2, 0)]  # Anti-diagonals
         for i in range(3):
@@ -114,6 +118,7 @@ class ComputerPlayer(Player):
                 return [True, [i-2, i-2]]
             elif board[ad[i][0]][ad[i][1]] == board[ad[i-1][0]][ad[i-1][1]] == opponent and board[ad[i-2][0]][ad[i-2][1]] == ' ':
                 return [True, [ad[i-2][0], ad[i-2][1]]]
+            return [False, None]
 
 
 
