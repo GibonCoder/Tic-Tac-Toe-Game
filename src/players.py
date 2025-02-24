@@ -108,8 +108,12 @@ class ComputerPlayer(Player):
                 if board[row-3][col] == board[row-2][col] == opponent and board[row-1][col] == ' ':
                     return [True, [col, row-1]]
         # Check diagonals
+        ad = [(0, 2), (1, 1), (2, 0)]  # Anti-diagonals
         for i in range(3):
             if board[i][i] == board[i-1][i-1] == opponent and board[i-2][i-2] == ' ':
                 return [True, [i-2, i-2]]
+            elif board[ad[i][0]][ad[i][1]] == board[ad[i-1][0]][ad[i-1][1]] == opponent and board[ad[i-2][0]][ad[i-2][1]] == ' ':
+                return [True, [ad[i-2][0], ad[i-2][1]]]
+
 
 
