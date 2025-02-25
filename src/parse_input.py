@@ -8,5 +8,7 @@ def parse_input(input_string: str) -> list:
        Returns:
            list: The parsed input."""
     listed_input = list(input_string)
+    if listed_input[1] not in ['1', '2', '3']:
+        return [False]
     parsed_input = [int(trans_col(listed_input[0])), int(listed_input[1])-1]
     return parsed_input
