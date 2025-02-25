@@ -19,14 +19,17 @@ class Game:
         if self.validate_move(cell):
             self.board[cell[1]][cell[0]] = player
             return True
-        print('Invalid move!')
         return False
 
     def validate_move(self, cell: list):
         """Checks if a move is valid.
            Args:
                cell (list): The cell to validate."""
-        if cell[0] not in range(3) or cell[1] not in range(3):
+        if cell[0] == -1:
+            print("Invalid move! Column doesn't exist!")
+            return False
+        if cell[1] not in range(3):
+            print("Invalid move! Row doesn't exist!")
             return False
         if self.board[cell[1]][cell[0]] != ' ':
             print('This cell is already taken!')
