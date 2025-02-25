@@ -12,4 +12,4 @@ def transform_column(column: str) -> int:
         case 'C':
             return 2
         case _:
-            raise ValueError('Invalid column')
+            return -1
