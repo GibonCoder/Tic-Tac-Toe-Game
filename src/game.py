@@ -25,7 +25,7 @@ class Game:
         """Checks if a move is valid.
            Args:
                cell (list): The cell to validate."""
-        if not cell[0]:
+        if cell == [-1, -1]:
             print("Invalid cell format! Please enter a valid cell (e.g. A1).")
             return False
         if cell[0] == -1:
