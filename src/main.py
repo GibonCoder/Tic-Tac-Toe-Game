@@ -1,11 +1,12 @@
 from game import Game
 from players import HumanPlayer, ComputerPlayer
+from assign_symbols import assign_symbols
 
 game = Game()
 human = HumanPlayer()
-human.character = 'X'
 computer = ComputerPlayer()
-computer.character = 'O'
+
+human.character, computer.character = assign_symbols()
 
 while True:
     game.print_board()
