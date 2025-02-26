@@ -59,3 +59,7 @@ class Game:
     def is_tie(self):
         """Checks if the game is a tie."""
         return all(cell != ' ' for row in self.board for cell in row) and self.check_win() is False
+
+    def is_board_full(self):
+        if all(cell != ' ' for row in self.board for cell in row):
+            return True
