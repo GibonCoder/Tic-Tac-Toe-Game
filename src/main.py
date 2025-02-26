@@ -22,7 +22,10 @@ while True:
             print('It\'s a tie!')
             break
         move = computer.get_move(game.board)
-        game.place_move(move, computer.character)
+        while not game.place_move(move, computer.character):
+            if game.is_board_full():
+                break
+            move = computer.get_move(game.board)
         is_win = game.check_win()
         if is_win[0]:
             game.print_board()
@@ -31,4 +34,8 @@ while True:
         elif game.is_tie():
             game.print_board()
             print('It\'s a tie!')
+            break
+        elif game.is_board_full():
+            game.print_board()
+            print('Board is full. It\'s a tie!')
             break
